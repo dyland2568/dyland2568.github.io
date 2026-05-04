@@ -8,25 +8,37 @@
       margin: 0;
       font-family: Arial, sans-serif;
       text-align: center;
-      background: linear-gradient(135deg, #667eea, #764ba2);
+      background: linear-gradient(135deg, #ff6a00, #ee0979);
       color: white;
     }
 
     header {
       padding: 20px;
-      font-size: 24px;
+      font-size: 28px;
       font-weight: bold;
     }
 
+    .container {
+      margin-top: 40px;
+    }
+
+    .box {
+      background: rgba(255,255,255,0.1);
+      padding: 20px;
+      margin: 20px auto;
+      width: 80%;
+      border-radius: 15px;
+    }
+
     button {
-      padding: 12px 20px;
+      padding: 10px 20px;
       margin: 10px;
       font-size: 16px;
       border: none;
       border-radius: 10px;
       cursor: pointer;
       background: white;
-      color: #333;
+      color: black;
       transition: 0.3s;
     }
 
@@ -34,8 +46,8 @@
       background: #ddd;
     }
 
-    .container {
-      margin-top: 50px;
+    a {
+      text-decoration: none;
     }
   </style>
 </head>
@@ -45,13 +57,51 @@
   <header>🌪️ Chaos Corner</header>
 
   <div class="container">
-    <h1>Welcome 😄</h1>
-    <p>This is my random fun website</p>
 
-    <button onclick="goToFun()">🎉 Fun Page</button>
-    <button onclick="like()">❤️ Like</button>
+    <!-- ✍️ YOUR TEXT SECTION -->
+    <div class="box">
+      <h2>About Me</h2>
+      <p>
+        👉 Replace this text with anything you want.  
+        This is your space for thoughts, intro, chaos, anything 😄
+      </p>
+    </div>
 
-    <p>Likes: <span id="count">0</span></p>
+    <!-- 🔗 YOUR LINKS SECTION -->
+    <div class="box">
+      <h2>My Links</h2>
+
+      <!-- 👉 EDIT THESE LINKS -->
+      <a href="https://google.com" target="_blank">
+        <button>Go to Google</button>
+      </a>
+
+      <a href="https://youtube.com" target="_blank">
+        <button>My YouTube</button>
+      </a>
+
+      <!-- 👉 ADD MORE LIKE THIS -->
+      <!--
+      <a href="YOUR_LINK_HERE" target="_blank">
+        <button>Button Name</button>
+      </a>
+      -->
+
+    </div>
+
+    <!-- ❤️ LIKE SYSTEM -->
+    <div class="box">
+      <h2>Support the Chaos 😈</h2>
+      <button onclick="like()">❤️ Like</button>
+      <p>Likes: <span id="count">0</span></p>
+    </div>
+
+    <!-- 🔗 NAVIGATION -->
+    <div class="box">
+      <h2>Explore</h2>
+      <button onclick="goToFun()">🎉 Fun Page</button>
+    </div>
+
   </div>
 
   <script>
