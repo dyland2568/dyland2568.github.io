@@ -1,184 +1,208 @@
-export default function GamerPortfolio() {
-  const projects = [
-    {
-      title: "Retro Launcher",
-      desc: "A futuristic launcher UI inspired by cyberpunk dashboards.",
-      tech: "React • Tailwind • Framer Motion",
-    },
-    {
-      title: "Pixel Arena",
-      desc: "Competitive game stats tracker with animated cards.",
-      tech: "Node.js • MongoDB • API",
-    },
-    {
-      title: "Neon Music",
-      desc: "Minimal lo-fi music visualizer for study sessions.",
-      tech: "JavaScript • Canvas",
-    },
-  ];
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gamer Portfolio</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: radial-gradient(circle at top, #0f0f1a, #000);
+      color: #fff;
+      overflow-x: hidden;
+    }
 
-  return (
-    <div className="min-h-screen bg-black text-white overflow-hidden relative">
-      {/* Background Glow */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(0,255,255,0.15),transparent_40%),radial-gradient(circle_at_bottom,rgba(255,0,255,0.15),transparent_40%)]" />
+    /* NAVBAR */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      padding: 20px 40px;
+      background: rgba(0,0,0,0.6);
+      position: sticky;
+      top: 0;
+      backdrop-filter: blur(10px);
+      z-index: 100;
+    }
 
-      {/* Navbar */}
-      <nav className="relative z-10 flex justify-between items-center px-8 py-6 backdrop-blur-md border-b border-white/10">
-        <h1 className="text-2xl font-bold tracking-widest">UNKNOWN CRACKER</h1>
-        <div className="flex gap-6 text-sm text-gray-300">
-          <a href="#about" className="hover:text-cyan-400 transition">About</a>
-          <a href="#projects" className="hover:text-cyan-400 transition">Projects</a>
-          <a href="#contact" className="hover:text-cyan-400 transition">Contact</a>
-        </div>
-      </nav>
+    nav a {
+      color: #00fff7;
+      margin: 0 10px;
+      text-decoration: none;
+    }
 
-      {/* Hero */}
-      <section className="relative z-10 flex flex-col items-center justify-center text-center px-6 py-28">
-        <div className="border border-cyan-400/30 bg-white/5 backdrop-blur-xl rounded-3xl p-10 shadow-2xl max-w-4xl">
-          <p className="uppercase tracking-[0.3em] text-cyan-400 text-sm mb-4">
-            Gamer • Developer • Creator
-          </p>
+    .glow {
+      color: #00fff7;
+      text-shadow: 0 0 10px #00fff7, 0 0 20px #00fff7;
+    }
 
-          <h1 className="text-5xl md:text-7xl font-black leading-tight mb-6">
-            BUILDING <span className="text-cyan-400">AESTHETIC</span>
-            <br /> DIGITAL WORLDS
-          </h1>
+    header {
+      text-align: center;
+      padding: 80px 20px;
+    }
 
-          <p className="text-gray-300 text-lg max-w-2xl mx-auto mb-8">
-            A futuristic portfolio website made for GitHub Pages. Customize this
-            section with your own bio, skills, and links.
-          </p>
+    header h1 {
+      font-size: 3.5rem;
+      margin: 0;
+    }
 
-          <div className="flex flex-wrap justify-center gap-4">
-            <a
-              href="https://github.com"
-              className="px-6 py-3 rounded-2xl bg-cyan-400 text-black font-bold hover:scale-105 transition"
-            >
-              GitHub
-            </a>
+    header p {
+      color: #aaa;
+      margin-top: 10px;
+    }
 
-            <a
-              href="#projects"
-              className="px-6 py-3 rounded-2xl border border-white/20 hover:bg-white/10 transition"
-            >
-              View Projects
-            </a>
-          </div>
-        </div>
-      </section>
+    .container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+      padding: 40px;
+    }
 
-      {/* About */}
-      <section id="about" className="relative z-10 px-8 py-20 max-w-6xl mx-auto">
-        <div className="grid md:grid-cols-2 gap-10 items-center">
-          <div>
-            <h2 className="text-4xl font-bold mb-6 text-cyan-400">About Me</h2>
-            <p className="text-gray-300 leading-8 text-lg">
-              I enjoy creating aesthetic interfaces, futuristic dashboards,
-              gaming setups, and experimental web projects. This template is
-              fully customizable and works perfectly for GitHub Pages hosting.
-            </p>
-          </div>
+    .card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(0, 255, 247, 0.2);
+      border-radius: 15px;
+      padding: 20px;
+      backdrop-filter: blur(10px);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
 
-          <div className="bg-white/5 border border-white/10 rounded-3xl p-8 backdrop-blur-xl">
-            <div className="space-y-5">
-              <div>
-                <p className="text-sm text-gray-400 mb-2">Frontend</p>
-                <div className="w-full bg-gray-800 rounded-full h-3 overflow-hidden">
-                  <div className="bg-cyan-400 h-full w-[90%] rounded-full" />
-                </div>
-              </div>
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 0 20px #00fff7;
+    }
 
-              <div>
-                <p className="text-sm text-gray-400 mb-2">UI Design</p>
-                <div className="w-full bg-gray-800 rounded-full h-3 overflow-hidden">
-                  <div className="bg-pink-500 h-full w-[85%] rounded-full" />
-                </div>
-              </div>
+    .card h2 {
+      color: #00fff7;
+    }
 
-              <div>
-                <p className="text-sm text-gray-400 mb-2">Gaming Energy</p>
-                <div className="w-full bg-gray-800 rounded-full h-3 overflow-hidden">
-                  <div className="bg-green-400 h-full w-full rounded-full" />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+    .btn {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 10px 15px;
+      border: 1px solid #00fff7;
+      color: #00fff7;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: 0.3s;
+    }
 
-      {/* Projects */}
-      <section
-        id="projects"
-        className="relative z-10 px-8 py-20 max-w-7xl mx-auto"
-      >
-        <h2 className="text-4xl font-bold text-center mb-14 text-cyan-400">
-          Featured Projects
-        </h2>
+    .btn:hover {
+      background: #00fff7;
+      color: #000;
+    }
 
-        <div className="grid md:grid-cols-3 gap-8">
-          {projects.map((project, index) => (
-            <div
-              key={index}
-              className="bg-white/5 border border-white/10 rounded-3xl p-6 backdrop-blur-xl hover:-translate-y-2 transition duration-300 shadow-2xl"
-            >
-              <div className="h-40 rounded-2xl bg-gradient-to-br from-cyan-400/20 to-pink-500/20 mb-6 flex items-center justify-center text-4xl font-black">
-                0{index + 1}
-              </div>
+    /* SKILLS */
+    .skill {
+      margin: 10px 0;
+    }
 
-              <h3 className="text-2xl font-bold mb-3">{project.title}</h3>
-              <p className="text-gray-400 mb-5">{project.desc}</p>
+    .bar {
+      height: 8px;
+      background: #111;
+      border-radius: 10px;
+      overflow: hidden;
+    }
 
-              <div className="text-sm text-cyan-400 font-semibold">
-                {project.tech}
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
+    .fill {
+      height: 100%;
+      background: #00fff7;
+    }
 
-      {/* Contact */}
-      <section
-        id="contact"
-        className="relative z-10 px-8 py-20 text-center"
-      >
-        <div className="max-w-3xl mx-auto bg-white/5 border border-white/10 rounded-3xl p-10 backdrop-blur-xl">
-          <h2 className="text-4xl font-bold mb-6 text-cyan-400">
-            Contact Me
-          </h2>
+    /* SECTIONS */
+    section {
+      padding: 40px;
+    }
 
-          <p className="text-gray-300 mb-8 text-lg">
-            Replace these links with your own socials.
-          </p>
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
 
-          <div className="flex flex-wrap justify-center gap-4">
-            <a
-              href="https://github.com"
-              className="px-6 py-3 rounded-2xl bg-white/10 hover:bg-cyan-400 hover:text-black transition"
-            >
-              GitHub
-            </a>
+    .project-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(0,255,247,0.2);
+      padding: 15px;
+      border-radius: 12px;
+    }
 
-            <a
-              href="https://discord.com"
-              className="px-6 py-3 rounded-2xl bg-white/10 hover:bg-pink-500 transition"
-            >
-              Discord
-            </a>
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
 
-            <a
-              href="https://youtube.com"
-              className="px-6 py-3 rounded-2xl bg-white/10 hover:bg-red-500 transition"
-            >
-              YouTube
-            </a>
-          </div>
-        </div>
-      </section>
+<nav>
+  <div class="glow">⚡ DYLAND PORTFOLIO</div>
+  <div>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
 
-      {/* Footer */}
-      <footer className="relative z-10 text-center text-gray-500 py-8 border-t border-white/10">
-        © 2026 Unknown Cracker — Built for GitHub Pages
-      </footer>
+<header>
+  <h1 class="glow">⚡ Gamer Portfolio ⚡</h1>
+  <p>Welcome to my digital battlefield</p>
+</header>
+
+<section id="about">
+  <div class="card">
+    <h2>About Me</h2>
+    <p>I am a gamer and developer building futuristic web projects and exploring tech.</p>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="card">
+    <h2>Skills</h2>
+
+    <div class="skill">HTML<div class="bar"><div class="fill" style="width:90%"></div></div></div>
+    <div class="skill">CSS<div class="bar"><div class="fill" style="width:80%"></div></div></div>
+    <div class="skill">JavaScript<div class="bar"><div class="fill" style="width:70%"></div></div></div>
+    <div class="skill">Python<div class="bar"><div class="fill" style="width:60%"></div></div></div>
+
+  </div>
+</section>
+
+<section id="projects">
+  <h2 class="glow">Projects</h2>
+  <div class="projects">
+
+    <div class="project-card">
+      <h3>Cyber UI Dashboard</h3>
+      <p>Futuristic control panel UI design.</p>
     </div>
-  );
-}
+
+    <div class="project-card">
+      <h3>Mini Game</h3>
+      <p>Simple browser-based arcade game.</p>
+    </div>
+
+    <div class="project-card">
+      <h3>AI Assistant</h3>
+      <p>Jarvis-style assistant prototype.</p>
+    </div>
+
+  </div>
+</section>
+
+<section id="contact">
+  <div class="card">
+    <h2>Contact</h2>
+    <p>Connect with me on GitHub, Discord or Email.</p>
+    <a class="btn" href="#">Send Message</a>
+  </div>
+</section>
+
+<footer>
+  Made with ⚡ by You
+</footer>
+
+</body>
+</html>
