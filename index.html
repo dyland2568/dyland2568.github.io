@@ -109,7 +109,6 @@
       background: #00fff7;
     }
 
-    /* SECTIONS */
     section {
       padding: 40px;
     }
@@ -132,6 +131,70 @@
       padding: 20px;
       color: #555;
     }
+
+    /* JARVIS CHAT */
+    .jarvis-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #00fff7;
+      color: #000;
+      border: none;
+      padding: 15px;
+      border-radius: 50%;
+      cursor: pointer;
+      box-shadow: 0 0 15px #00fff7;
+      font-weight: bold;
+      z-index: 999;
+    }
+
+    .chatbox {
+      position: fixed;
+      bottom: 80px;
+      right: 20px;
+      width: 300px;
+      height: 400px;
+      background: rgba(0,0,0,0.9);
+      border: 1px solid #00fff7;
+      border-radius: 10px;
+      display: none;
+      flex-direction: column;
+      overflow: hidden;
+      z-index: 999;
+    }
+
+    .chat-header {
+      background: #00fff7;
+      color: #000;
+      padding: 10px;
+      font-weight: bold;
+    }
+
+    .messages {
+      flex: 1;
+      padding: 10px;
+      overflow-y: auto;
+      font-size: 14px;
+    }
+
+    .input-area {
+      display: flex;
+    }
+
+    .input-area input {
+      flex: 1;
+      padding: 10px;
+      border: none;
+      outline: none;
+    }
+
+    .input-area button {
+      background: #00fff7;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+    }
+
   </style>
 </head>
 <body>
@@ -161,34 +224,19 @@
 <section id="skills">
   <div class="card">
     <h2>Skills</h2>
-
     <div class="skill">HTML<div class="bar"><div class="fill" style="width:90%"></div></div></div>
     <div class="skill">CSS<div class="bar"><div class="fill" style="width:80%"></div></div></div>
     <div class="skill">JavaScript<div class="bar"><div class="fill" style="width:70%"></div></div></div>
     <div class="skill">Python<div class="bar"><div class="fill" style="width:60%"></div></div></div>
-
   </div>
 </section>
 
 <section id="projects">
   <h2 class="glow">Projects</h2>
   <div class="projects">
-
-    <div class="project-card">
-      <h3>Cyber UI Dashboard</h3>
-      <p>Futuristic control panel UI design.</p>
-    </div>
-
-    <div class="project-card">
-      <h3>Mini Game</h3>
-      <p>Simple browser-based arcade game.</p>
-    </div>
-
-    <div class="project-card">
-      <h3>AI Assistant</h3>
-      <p>Jarvis-style assistant prototype.</p>
-    </div>
-
+    <div class="project-card"><h3>Cyber UI Dashboard</h3><p>Futuristic control panel UI design.</p></div>
+    <div class="project-card"><h3>Mini Game</h3><p>Simple browser-based arcade game.</p></div>
+    <div class="project-card"><h3>AI Assistant</h3><p>Jarvis-style assistant prototype.</p></div>
   </div>
 </section>
 
@@ -203,6 +251,49 @@
 <footer>
   Made with ⚡ by You
 </footer>
+
+<!-- JARVIS CHAT -->
+<button class="jarvis-btn" onclick="toggleChat()">J</button>
+
+<div class="chatbox" id="chatbox">
+  <div class="chat-header">JARVIS MODE</div>
+  <div class="messages" id="messages"></div>
+  <div class="input-area">
+    <input id="input" placeholder="Ask Jarvis..." />
+    <button onclick="sendMsg()">➤</button>
+  </div>
+</div>
+
+<script>
+  function toggleChat() {
+    const box = document.getElementById('chatbox');
+    box.style.display = box.style.display === 'flex' ? 'none' : 'flex';
+  }
+
+  function addMessage(text, from) {
+    const msg = document.createElement('div');
+    msg.textContent = from + ": " + text;
+    document.getElementById('messages').appendChild(msg);
+  }
+
+  function sendMsg() {
+    const input = document.getElementById('input');
+    const text = input.value;
+    if (!text) return;
+
+    addMessage(text, "You");
+
+    let response = "I am Jarvis. I don't understand that yet.";
+
+    if (text.toLowerCase().includes("hello")) response = "Hello, Unknown Cracker.";
+    else if (text.toLowerCase().includes("who are you")) response = "I am Jarvis, your AI assistant.";
+    else if (text.toLowerCase().includes("help")) response = "Ask me about projects, skills, or system commands.";
+
+    setTimeout(() => addMessage(response, "Jarvis"), 500);
+
+    input.value = "";
+  }
+</script>
 
 </body>
 </html>
